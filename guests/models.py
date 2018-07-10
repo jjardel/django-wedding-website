@@ -7,9 +7,7 @@ from django.dispatch import receiver
 
 # these will determine the default formality of correspondence
 ALLOWED_TYPES = [
-    ('formal', 'formal'),
-    ('fun', 'fun'),
-    ('dimagi', 'dimagi'),
+    ('default', 'default')
 ]
 
 
@@ -33,6 +31,7 @@ class Party(models.Model):
     rehearsal_dinner = models.BooleanField(default=False)
     is_attending = models.NullBooleanField(default=None)
     comments = models.TextField(null=True, blank=True)
+    interested_in_bus = models.NullBooleanField(default=False)
 
     def __unicode__(self):
         return 'Party: {}'.format(self.name)
@@ -55,10 +54,9 @@ class Party(models.Model):
 
 
 MEALS = [
-    ('beef', 'cow'),
-    ('fish', 'fish'),
-    ('hen', 'hen'),
-    ('vegetarian', 'vegetable'),
+    ('omnivore', 'I eat anything'),
+    ('vegetarian', 'Veggies only, please'),
+    ('vegan', 'No animal products for me')
 ]
 
 

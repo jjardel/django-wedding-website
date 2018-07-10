@@ -42,7 +42,7 @@ def export_guests():
     file = StringIO.StringIO()
     writer = csv.writer(file)
     writer.writerow(headers)
-    for party in Party.in_default_order():
+    for party in Party.in_defaulmt_order():
         for guest in party.guest_set.all():
             if guest.is_attending:
                 writer.writerow([

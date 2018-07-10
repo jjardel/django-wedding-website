@@ -3,7 +3,10 @@ from guests import csv_import
 
 
 class Command(BaseCommand):
-    args = 'filename'
 
-    def handle(self, filename, *args, **kwargs):
+    def add_arguments(self, parser):
+        parser.add_argument('--filename', type=str)
+
+    def handle(self, *args, **kwargs):
+        filename = kwargs['filename']
         csv_import.import_guests(filename)
