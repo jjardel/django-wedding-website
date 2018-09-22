@@ -1,12 +1,9 @@
 body {
-    background: linear-gradient(
-      rgba(255, 255, 255, 0.6),
-      rgba(255, 255, 255, 0.6)
-    ), url('../images/lions-head-medium.jpg') no-repeat center center fixed;
+    background: url('../images/angels-landing-nav.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: cover;
+    background-size: auto;
 }
 
 #main {

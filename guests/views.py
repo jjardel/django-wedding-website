@@ -59,6 +59,11 @@ def dashboard(request):
         'total_invites': Party.objects.filter(is_invited=True).count(),
         'meal_breakdown': meal_breakdown,
         'category_breakdown': category_breakdown,
+        'parties_interested_in_bus': Party.objects
+                  .filter(is_invited=True)
+                  .filter(is_attending=True)
+                  .filter(interested_in_bus=True)
+                  .count(),
     })
 
 
@@ -78,6 +83,13 @@ def invitation(request, invite_id):
         if request.POST.get('comments'):
             comments = request.POST.get('comments')
             party.comments = comments if not party.comments else '{}; {}'.format(party.comments, comments)
+        if request.POST.get("bus"):
+            bus = request.POST.get("bus")
+            if not party.interested_in_bus:
+                if bus == "yes":
+                    party.interested_in_bus = True
+                elif bus == "no":
+                    party.interested_in_bus = False
         party.is_attending = party.any_guests_attending
         party.save()
         return HttpResponseRedirect(reverse('rsvp-confirm', args=[invite_id]))
@@ -146,7 +158,6 @@ def test_email(request, template_id):
     context = get_save_the_date_context(template_id)
     send_save_the_date_email(context, [settings.DEFAULT_WEDDING_TEST_EMAIL])
     return HttpResponse('sent!')
-
 
 def _base64_encode(filepath):
     with open(filepath, "rb") as image_file:
