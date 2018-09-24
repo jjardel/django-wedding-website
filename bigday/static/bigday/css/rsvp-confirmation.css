@@ -1,9 +1,9 @@
 body {
-    background: url('../images/angels-landing-nav.jpg') no-repeat center center fixed;
+    background: url('../images/invitation-background.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: auto;
+    background-size: cover;
 }
 
 #main {

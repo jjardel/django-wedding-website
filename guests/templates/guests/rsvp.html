@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block page_head %}
+    <link href="{% static 'bigday/css/creative.css' %}" rel="stylesheet">
+    <link href="{% static 'bigday/css/rsvp.css' %}" rel="stylesheet" xmlns="http://www.w3.org/1999/html">
+{% endblock %}
+{% block page_content %}
+<div class="container">
+  <nav class="navbar-fixed-top" id="header">
+    <a class="navbar-brand" href="/">Back</a>
+  </nav>
+</div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="container" id="main">
+        <section class="col-md-5k" id="rsvp-form">
+        <form data-toggle="validator" id="rsvp-code" class="form-horizontal" method="post">
+            <h2 id="rsvp-header" class="text-center">RSVP</h2>
+            <p align="center">
+                Enter the 6-character RSVP code that came with your invitation. <br>
+                If you need help, email <a href="mailto:{{ support_email }}">{{ support_email }}</a>.
+            </p>
+            <div class="clearfix"></div>
+            {% csrf_token %}
+            <div class="form-group">
+                <input type="text" name="rsvp" maxlength="{{ rsvp_code_length }}" minlength="{{ rsvp_code_length }}" class="form-control" placeholder="RSVP Code" required>
+                <div class="text-center">
+                    <input type="submit" class="btn btn-primary" value="Submit Response"/>
+                </div>
+            </div>
+        </form>
+        </section>
+    </div>
+{% endblock %}
