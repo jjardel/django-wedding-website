@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block page_head %}
+    <link href="{% static 'bigday/css/creative.css' %}" rel="stylesheet">
+    <link href="{% static 'bigday/css/rsvp.css' %}" rel="stylesheet" xmlns="http://www.w3.org/1999/html">
+{% endblock %}
+{% block page_content %}
+<div class="container">
+  <nav class="navbar-fixed-top" id="header">
+    <a class="navbar-brand" href="/rsvp">Back</a>
+  </nav>
+</div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="container" id="main">
+        <section class="col-md-5k" id="rsvp-form">
+        <div class="alert alert-danger" role="alert">
+          <h4 class="alert-heading">Oh no!</h4>
+          <p>We can't find your RSVP code!  Double-check your invitation and try again.  <br> <br>
+              It's a {{ rsvp_code_length }}-character string of numbers and letters and it's case-sensitive <br>
+              (so "Gr8Code" is different from "gr8code").
+          </p>
+          <hr>
+          <p class="mb-0">If you need help, email <a href="mailto:{{ support_email }}">{{ support_email }}</a> or contact John or Katharine!</p>
+        </div>
+        </section>
+    </div>
+{% endblock %}
