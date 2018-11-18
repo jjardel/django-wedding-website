@@ -15,7 +15,6 @@ from guests.invitation import get_invitation_context, INVITATION_TEMPLATE, guess
 from guests.models import Guest, MEALS, Party
 from guests.save_the_date import get_save_the_date_context, send_save_the_date_email, SAVE_THE_DATE_TEMPLATE, \
     SAVE_THE_DATE_CONTEXT_MAP
-from models import INVITATION_ID_LENGTH
 
 class GuestListView(ListView):
     model = Guest
@@ -102,21 +101,19 @@ def invitation(request, invite_id):
 def rsvp(request):
     if request.method == "POST":
         if request.POST.get("rsvp"):
-            invite_id = request.POST.get("rsvp")
+            invite_id = request.POST.get("rsvp").upper()
             if Party.objects.filter(invitation_id=invite_id).exists():
                 return HttpResponseRedirect(reverse('invitation', args=[invite_id]))
             else:
                 return HttpResponseRedirect(reverse('rsvp-invalid'))
     return render(request, template_name='guests/rsvp.html', context={
-        'support_email': settings.DEFAULT_WEDDING_REPLY_EMAIL,
-        'rsvp_code_length': INVITATION_ID_LENGTH
+        'support_email': settings.DEFAULT_WEDDING_REPLY_EMAIL
     })
 
 
 def rsvp_invalid(request):
     return render(request, template_name='guests/rsvp-invalid.html', context={
-        'support_email': settings.DEFAULT_WEDDING_REPLY_EMAIL,
-        'rsvp_code_length': INVITATION_ID_LENGTH
+        'support_email': settings.DEFAULT_WEDDING_REPLY_EMAIL
     })
 
 InviteResponse = namedtuple('InviteResponse', ['guest_pk', 'is_attending', 'meal'])
