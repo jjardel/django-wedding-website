@@ -12,7 +12,7 @@ ALLOWED_TYPES = [
     ('default', 'default')
 ]
 
-INVITATION_ID_LENGTH = 6
+INVITATION_ID_LENGTH = 15
 
 
 def _random_uuid():
@@ -28,7 +28,7 @@ class Party(models.Model):
     category = models.CharField(max_length=20, null=True, blank=True)
     save_the_date_sent = models.DateTimeField(null=True, blank=True, default=None)
     save_the_date_opened = models.DateTimeField(null=True, blank=True, default=None)
-    invitation_id = models.CharField(max_length=INVITATION_ID_LENGTH, db_index=True, default=_random_uuid, unique=True)
+    invitation_id = models.CharField(max_length=15, db_index=True, default=_random_uuid, unique=True)
     invitation_sent = models.DateTimeField(null=True, blank=True, default=None)
     invitation_opened = models.DateTimeField(null=True, blank=True, default=None)
     is_invited = models.BooleanField(default=False)
