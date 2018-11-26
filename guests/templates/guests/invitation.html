@@ -50,12 +50,28 @@
             {% endif %}
             {% endfor %}
             <hr>
+            <div class="form-group">
+                <div class="text-center">
+                    We want everyone to safely enjoy themselves at our wedding.
+                    We're looking in to a few options for transportation to/from the venue, and we'd love your feedback.
+                </div>
+
+            </div>
             <div class="form-group col-sm-12" id="bus-question">
-                <label for="bus-question}" class="col-sm-5 control-label">Interested in Transportation to/from the venue?</label>
+                <label for="bus-question}" class="col-sm-5 control-label">Preferred method of transportation?</label>
                 <label class="radio-inline">
-                    <input class="bus-radio" type="radio" name="bus" checked value="yes">yes, party bus!</label>
+                    <input class="transportation-radio" type="radio" name="transportation" value="bus">bus</label>
                 <label class="radio-inline">
-                    <input class="bus-radio" type="radio" name="bus" value="no">no thanks!</label>
+                    <input class="transportation-radio" type="radio" name="transportation" value="rideshare">uber/lyft
+                </label>
+                <label class="radio-inline">
+                    <input class="transportation-radio" type="radio" name="transportation" value="drive">drive myself
+                </label>
+
+            </div>
+            <div class="form-group col-sm-12">
+                <input type="email" name="email" class="form-control" id="email" placeholder="Email address">
+                <small id="email-help" class="form-text text-muted">Enter one member in your party's email address so that we can stay in touch</small>
             </div>
             <div class="form-group col-sm-12">
                 <input type="text" name="comments" class="form-control" placeholder="Questions/comments/well wishes" >
@@ -83,12 +99,16 @@
             var value = target.attr('value');
             var mealButtonContainer = target.closest('.form-group').next('.form-group');
             var mealButtons = mealButtonContainer.find('[type=radio]');
+            var emailContainer = document.getElementById("email");
             if (value === 'yes') {
                 mealButtonContainer.removeClass('text-muted');
                 mealButtons.each(function (index, button) {
                     button.disabled = false;
                     button.required = true;
                 });
+                // if we get at least one "yes", make email required.
+                // (if someone initially responds yes, then changes to no, this still makes email required)
+                emailContainer.required = true;
             } else if (value === "no") {
                 mealButtonContainer.addClass('text-muted');
                 mealButtons.each(function (index, button) {

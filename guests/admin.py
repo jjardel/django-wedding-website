@@ -10,8 +10,8 @@ class GuestInline(admin.TabularInline):
 
 class PartyAdmin(admin.ModelAdmin):
     list_display = ('name', 'type', 'category', 'save_the_date_sent', 'invitation_sent', 'rehearsal_dinner', 'invitation_opened',
-                    'is_invited', 'is_attending', 'interested_in_bus')
-    list_filter = ('type', 'category', 'is_invited', 'is_attending', 'rehearsal_dinner', 'invitation_opened', 'interested_in_bus')
+                    'is_invited', 'is_attending', 'preferred_transportation')
+    list_filter = ('type', 'category', 'is_invited', 'is_attending', 'rehearsal_dinner', 'invitation_opened', 'preferred_transportation')
     inlines = [GuestInline]
 
 

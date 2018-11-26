@@ -35,7 +35,8 @@ class Party(models.Model):
     rehearsal_dinner = models.BooleanField(default=False)
     is_attending = models.NullBooleanField(default=None)
     comments = models.TextField(null=True, blank=True)
-    interested_in_bus = models.NullBooleanField(default=False)
+    preferred_transportation = models.TextField(null=True, blank=True)
+    party_email = models.TextField(null=True, blank=True)
 
     def __unicode__(self):
         return 'Party: {}'.format(self.name)
