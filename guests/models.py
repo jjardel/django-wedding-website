@@ -60,8 +60,8 @@ class Party(models.Model):
 
 MEALS = [
     ('omnivore', 'I eat anything'),
-    ('vegetarian', 'Veggies only, please'),
-    ('vegan', 'No animal products for me')
+    ('vegetarian', 'Vegetarian meal, please'),
+    ('vegan', 'Vegan meal, please')
 ]
 
 
