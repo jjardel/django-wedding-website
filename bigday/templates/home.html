@@ -135,18 +135,17 @@
     <section id="other-stuff" class="bg-primary">
         {% include 'partials/misc.html' %}
     </section>
-    <section id="gifts">
-        {% include 'partials/gifts.html' %}
-    </section>
-    {% endcomment %}
+    {%  comment %}
+    {% include 'partials/save-the-dates.html' %}
+    {%  endcomment %}
     <section id="story" class="bg-dark">
         {% include 'partials/story.html' %}
     </section>
         {% include 'partials/proposal.html' %}
-    {%  comment %}
-    {% include 'partials/save-the-dates.html' %}
-    {%  endcomment %}
-    <section id="contact" class="bg-dark">
+    <section id="gifts" class="bg-dark">
+        {% include 'partials/gifts.html' %}
+    </section>
+    <section id="contact">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
