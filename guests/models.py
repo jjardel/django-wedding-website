@@ -9,7 +9,8 @@ from django.dispatch import receiver
 
 # these will determine the default formality of correspondence
 ALLOWED_TYPES = [
-    ('default', 'default')
+    ('default', 'default'),
+    ('ru_joke', 'ru_joke')
 ]
 
 INVITATION_ID_LENGTH = 15
